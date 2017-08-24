@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.Setup.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -92,7 +93,7 @@ namespace NuGetMsbuildChecker
             if (decimal.TryParse(userVersion, out parsedVersion))
             {
                 var adjustedVersion = (decimal)(((int)(parsedVersion * 10)) / 10F);
-                userVersionString = adjustedVersion.ToString("F1");
+                userVersionString = adjustedVersion.ToString("F1", CultureInfo.InvariantCulture);
             }
 
             // First match by string comparison
